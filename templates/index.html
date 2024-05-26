@@ -1,53 +1,61 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<style>
-.button {
-background-color: #23b83c;
-	border: 2px solid #020353;
-	color: whitesmoke;
-	padding: 0.5em 0.5em;
-	text-align: center;
-	text-decoration: none;
-	font-size: 1em;
-	display: inline-block;
-	width: 18%;
-	border-radius: 5px;
-	box-shadow: 3px 3px 8px 0 #000; 
-}
-body {
-  background-image: url("{{url_for('static', filename='background.jpg')}}");
-  background-repeat: no-repeat;
- background-size: 100% 100%;
-}
-h1{
-   background-color: Green;
-  color: white;
-}
-h3{
-   background-color: green;
-  color: white;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict House Price</title>
+    <style>
+        .button {
+            background-color: #23b83c;
+            border: 2px solid #020353;
+            color: whitesmoke;
+            padding: 0.5em 0.5em;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1em;
+            display: inline-block;
+            width: 18%;
+            border-radius: 5px;
+            box-shadow: 3px 3px 8px 0 #000;
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        h1 {
+            background-color: Green;
+            color: white;
+        }
+        h3 {
+            background-color: green;
+            color: white;
+        }
+    </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-
-</style>
+        gtag('config', '{{ google_analytics_id }}');
+    </script>
+    <!-- End Google Analytics -->
 </head>
 <body>
-<center>
-
-
-<h1>Predict House Price</h1>
-<pre>
-<form action="{{ url_for('predict')}}"method="post">
-
-<input type='text' name="area" placeholder="Area in sq. ft" required="required"/>
-
-
-<button type="submit" class="button">Predict Price</button>
-</form>
-<textarea>
-{{prediction_text}}
-</textarea>
-</pre>
-</center>
+    <center>
+        <h1>Predict House Price</h1>
+        <pre>
+            <form action="{{ url_for('predict') }}" method="post">
+                <input type='text' name="area" placeholder="Area in sq. ft" required="required"/>
+                <button type="submit" class="button">Predict Price</button>
+            </form>
+            <textarea>
+                {{ prediction_text }}
+            </textarea>
+        </pre>
+    </center>
 </body>
 </html>
+
